@@ -1,9 +1,28 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
     static void main() {
-        System.out.println("Welcome to palindrome checker management system");
-        System.out.println("Version : 1.0");
-        System.out.println("System initialized succesfully");
+        Scanner sc = new Scanner(System.in);
+        Stack<Character> stack = new Stack<>();
+        System.out.print("Enter a string ");
+        String input = sc.nextLine();
+
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
+        boolean isPalindrome = true;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        if (isPalindrome) {
+            System.out.println(input + "is a palindrome");
+        } else {
+            System.out.println(input + "is not a palindrom.");
+        }
+        sc.close();
     }
 }
